@@ -99,7 +99,7 @@
           <template v-slot:title>
             {{ colorCode }}
           </template>
-          <v-card-text>
+          <v-card-text class="font-weight-bold">
             {{ colorDetail }}
           </v-card-text>
         </v-card>
@@ -120,6 +120,10 @@ main {
 
 #canvas {
   border: 1px #808080 solid;
+}
+
+.v-card-title {
+  font-weight: bold !important;
 }
 
 .hidden {
