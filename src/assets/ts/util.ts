@@ -35,4 +35,9 @@ const padZero = (v: number | string, len: number) => {
   return ('0'.repeat(len) + v).slice(len * -1)
 }
 
-export default { getColorCode, getFontClass, calcCanvasSize, getYmdhms }
+export default {
+  getColorCode,
+  getFontClass,
+  calcCanvasSize,
+  getYmdhms,
+}
