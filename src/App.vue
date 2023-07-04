@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import ImageManipulation from './components/ImageManipulation.vue'
+</script>
+
 <template>
   <v-app>
     <v-main>
@@ -5,7 +9,3 @@
     </v-main>
   </v-app>
 </template>
-
-<script setup lang="ts">
-import ImageManipulation from './components/ImageManipulation.vue'
-</script>

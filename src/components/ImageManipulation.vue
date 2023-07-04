@@ -22,7 +22,7 @@ let context: CanvasRenderingContext2D
 
 onMounted(() => {
   canvas = document.getElementById('canvas') as HTMLCanvasElement
-  context = canvas.getContext('2d', { willReadFrequently: true }) as CanvasRenderingContext2D
+  context = canvas.getContext('2d', { willReadFrequently: true })!
 })
 
 const loadImage = () => {
@@ -126,7 +126,6 @@ const download = () => {
 
 const clear = () => {
   context.clearRect(0, 0, canvas.width, canvas.height)
-  ;[canvas.width, canvas.height] = [300, 150]
   images.value = undefined
   downloadUrl.value = '#'
   fileName.value = ''
