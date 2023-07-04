@@ -125,9 +125,10 @@ const download = () => {
 const clear = () => {
   context.clearRect(0, 0, canvas.width, canvas.height)
   images.value = undefined
+  ;[red.value, green.value, blue.value] = [0, 0, 0]
   downloadUrl.value = '#'
   fileName.value = ''
-  ;[red.value, green.value, blue.value] = [0, 0, 0]
+  tmpData.value = undefined
 }
 
 const getImageData = () => context.getImageData(0, 0, canvas.width, canvas.height)
