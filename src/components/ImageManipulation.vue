@@ -26,9 +26,8 @@ onMounted(() => {
 })
 
 const loadImage = () => {
-  if (!images.value || images.value.length < 1) {
+  if (!images.value || images.value.length < 1)
     return
-  }
   const reader = new FileReader()
   reader.onload = () => {
     const img = new Image()
@@ -117,9 +116,8 @@ const grayscale = () => {
 }
 
 const download = () => {
-  if (!images.value || images.value.length < 1) {
+  if (!images.value || images.value.length < 1)
     return
-  }
   fileName.value = images.value[0].name.replace(/\.\w+$/, `_${util.getYmdhms()}.png`)
   downloadUrl.value = canvas.toDataURL()
 }
