@@ -155,7 +155,7 @@ const putImageData = (imageData: ImageData) => {
           show-size
           prepend-icon="mdi-camera"
           v-model="images"
-          @change="loadImage()"
+          @change="loadImage"
         />
       </v-col>
     </v-row>
@@ -166,7 +166,7 @@ const putImageData = (imageData: ImageData) => {
           class="text-white font-weight-bold"
           block
           prepend-icon="mdi-flip-horizontal"
-          @click="flip()"
+          @click="flip"
         >
           左右反転
         </v-btn>
@@ -177,7 +177,7 @@ const putImageData = (imageData: ImageData) => {
           class="text-white font-weight-bold"
           block
           prepend-icon="mdi-rotate-3d-variant"
-          @click="rotate180()"
+          @click="rotate180"
         >
           180°回転
         </v-btn>
@@ -190,7 +190,7 @@ const putImageData = (imageData: ImageData) => {
           class="text-white font-weight-bold"
           block
           prepend-icon="mdi-invert-colors"
-          @click="invert()"
+          @click="invert"
         >
           色反転
         </v-btn>
@@ -201,7 +201,7 @@ const putImageData = (imageData: ImageData) => {
           class="text-white font-weight-bold"
           block
           prepend-icon="mdi-invert-colors-off"
-          @click="grayscale()"
+          @click="grayscale"
         >
           カラー ⇔ モノクロ
         </v-btn>
@@ -217,7 +217,7 @@ const putImageData = (imageData: ImageData) => {
           :href="downloadUrl"
           :download="fileName"
           :disabled="!imgLoaded"
-          @click="download()"
+          @click="download"
         >
           ダウンロード
         </v-btn>
@@ -228,7 +228,7 @@ const putImageData = (imageData: ImageData) => {
           class="text-white font-weight-bold"
           block
           prepend-icon="mdi-delete"
-          @click="clear()"
+          @click="clear"
         >
           クリア
         </v-btn>
