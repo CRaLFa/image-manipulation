@@ -107,8 +107,9 @@ const grayscale = () => {
   const imageData = getImageData()
   const data = imageData.data
   tmpData.value = getImageData()
+  let average
   for (let i = 0; i < data.length; i += 4) {
-    const average = (data[i] + data[i + 1] + data[i + 2]) / 3
+    average = (data[i] + data[i + 1] + data[i + 2]) / 3
     ;[data[i], data[i + 1], data[i + 2]] = [average, average, average]
   }
   putImageData(imageData)
