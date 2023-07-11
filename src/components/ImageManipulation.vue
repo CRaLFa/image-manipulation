@@ -10,7 +10,7 @@ const picking = ref(false)
 const downloadUrl = ref('#')
 const fileName = ref('')
 const isGray = ref(false)
-const tmpData = ref<ImageData>()
+const tmpImageData = ref<ImageData>()
 
 const colorCode = computed(() => util.getColorCode(red.value, green.value, blue.value))
 const colorDetail = computed(() => `R:${red.value}　G:${green.value}　B:${blue.value}`)
@@ -83,7 +83,7 @@ const rotate180 = () => {
   const copyData = data.slice()
   let j
   for (let i = 0; i < data.length; i += 4) {
-    j = (canvas.width * canvas.height - 1) * 4 - i
+    j = data.length - 4 - i
     ;[data[i], data[i + 1], data[i + 2], data[i + 3]] = [copyData[j], copyData[j + 1], copyData[j + 2], copyData[j + 3]]
   }
   putImageData(imageData)
@@ -99,14 +99,14 @@ const invert = () => {
 }
 
 const grayscale = () => {
-  if (isGray.value && tmpData.value) {
-    putImageData(tmpData.value)
+  if (isGray.value && tmpImageData.value) {
+    putImageData(tmpImageData.value)
     isGray.value = false
     return
   }
   const imageData = getImageData()
   const data = imageData.data
-  tmpData.value = getImageData()
+  tmpImageData.value = window.structuredClone(imageData)
   let average
   for (let i = 0; i < data.length; i += 4) {
     average = (data[i] + data[i + 1] + data[i + 2]) / 3
@@ -129,7 +129,7 @@ const clear = () => {
   ;[red.value, green.value, blue.value] = [0, 0, 0]
   downloadUrl.value = '#'
   fileName.value = ''
-  tmpData.value = undefined
+  tmpImageData.value = undefined
 }
 
 const getImageData = () => context.getImageData(0, 0, canvas.width, canvas.height)
