@@ -1,4 +1,4 @@
-const CANVAS_SIZE = 800
+const CANVAS_SIZE = 768
 
 const getColorCode = (r: number, g: number, b: number) => {
   const toHex = (n: number) => padZero(n.toString(16), 2)
