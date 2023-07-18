@@ -63,8 +63,8 @@ const pickColor = (e: MouseEvent) => {
 }
 
 const flip = () => {
-  const imageData = getImageData()
-  const data = imageData.data
+  const imgData = getImageData()
+  const data = imgData.data
   const copyData = data.slice()
   let i, j
   for (let y = 0; y < canvas.height; y++) {
@@ -74,28 +74,28 @@ const flip = () => {
       ;[data[i], data[i + 1], data[i + 2], data[i + 3]] = [copyData[j], copyData[j + 1], copyData[j + 2], copyData[j + 3]]
     }
   }
-  putImageData(imageData)
+  putImageData(imgData)
 }
 
 const rotate180 = () => {
-  const imageData = getImageData()
-  const data = imageData.data
+  const imgData = getImageData()
+  const data = imgData.data
   const copyData = data.slice()
   let j
   for (let i = 0; i < data.length; i += 4) {
     j = data.length - 4 - i
     ;[data[i], data[i + 1], data[i + 2], data[i + 3]] = [copyData[j], copyData[j + 1], copyData[j + 2], copyData[j + 3]]
   }
-  putImageData(imageData)
+  putImageData(imgData)
 }
 
 const invert = () => {
-  const imageData = getImageData()
-  const data = imageData.data
+  const imgData = getImageData()
+  const data = imgData.data
   for (let i = 0; i < data.length; i += 4) {
     [data[i], data[i + 1], data[i + 2]] = [255 - data[i], 255 - data[i + 1], 255 - data[i + 2]]
   }
-  putImageData(imageData)
+  putImageData(imgData)
 }
 
 const grayscale = () => {
@@ -104,15 +104,15 @@ const grayscale = () => {
     isGray.value = false
     return
   }
-  const imageData = getImageData()
-  const data = imageData.data
-  tmpImageData.value = window.structuredClone(imageData)
+  const imgData = getImageData()
+  const data = imgData.data
+  tmpImageData.value = window.structuredClone(imgData)
   let average
   for (let i = 0; i < data.length; i += 4) {
     average = (data[i] + data[i + 1] + data[i + 2]) / 3
     ;[data[i], data[i + 1], data[i + 2]] = [average, average, average]
   }
-  putImageData(imageData)
+  putImageData(imgData)
   isGray.value = true
 }
 
@@ -134,8 +134,8 @@ const clear = () => {
 
 const getImageData = () => context.getImageData(0, 0, canvas.width, canvas.height)
 
-const putImageData = (imageData: ImageData) => {
-  context.putImageData(imageData, 0, 0)
+const putImageData = (imgData: ImageData) => {
+  context.putImageData(imgData, 0, 0)
   enablePicker()
 }
 </script>
