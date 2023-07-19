@@ -62,7 +62,7 @@ const pickColor = (e: MouseEvent) => {
   ;[red.value, green.value, blue.value] = [pixel.data[0], pixel.data[1], pixel.data[2]]
 }
 
-const flip = () => {
+const flipHorizontal = () => {
   const imgData = getImageData()
   const data = imgData.data
   const copyData = data.slice()
@@ -89,7 +89,7 @@ const rotate180 = () => {
   putImageData(imgData)
 }
 
-const invert = () => {
+const invertColor = () => {
   const imgData = getImageData()
   const data = imgData.data
   for (let i = 0; i < data.length; i += 4) {
@@ -167,7 +167,7 @@ const putImageData = (imgData: ImageData) => {
           class="text-white font-weight-bold"
           block
           prepend-icon="mdi-flip-horizontal"
-          @click="flip"
+          @click="flipHorizontal"
         >
           左右反転
         </v-btn>
@@ -191,7 +191,7 @@ const putImageData = (imgData: ImageData) => {
           class="text-white font-weight-bold"
           block
           prepend-icon="mdi-invert-colors"
-          @click="invert"
+          @click="invertColor"
         >
           色反転
         </v-btn>
