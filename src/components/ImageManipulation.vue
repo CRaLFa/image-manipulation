@@ -29,11 +29,11 @@ const loadImage = () => {
   if (!images.value || images.value.length < 1)
     return
   const reader = new FileReader()
-  reader.onload = () => {
+  reader.addEventListener('load', () => {
     const img = new Image()
-    img.onload = () => drawImage(img)
+    img.addEventListener('load', () => drawImage(img))
     img.src = reader.result as string
-  }
+  })
   reader.readAsDataURL(images.value[0])
 }
 
@@ -65,13 +65,13 @@ const pickColor = (e: MouseEvent) => {
 const flipHorizontal = () => {
   const imgData = getImageData()
   const data = imgData.data
-  const copyData = data.slice()
+  const copy = data.slice()
   let i, j
   for (let y = 0; y < canvas.height; y++) {
     for (let x = 0; x < canvas.width; x++) {
       i = (canvas.width * y + x) * 4
       j = (canvas.width * (y + 1) - (x + 1)) * 4
-      ;[data[i], data[i + 1], data[i + 2], data[i + 3]] = [copyData[j], copyData[j + 1], copyData[j + 2], copyData[j + 3]]
+      ;[data[i], data[i + 1], data[i + 2], data[i + 3]] = [copy[j], copy[j + 1], copy[j + 2], copy[j + 3]]
     }
   }
   putImageData(imgData)
@@ -80,11 +80,11 @@ const flipHorizontal = () => {
 const rotate180 = () => {
   const imgData = getImageData()
   const data = imgData.data
-  const copyData = data.slice()
+  const copy = data.slice()
   let j
   for (let i = 0; i < data.length; i += 4) {
     j = data.length - 4 - i
-    ;[data[i], data[i + 1], data[i + 2], data[i + 3]] = [copyData[j], copyData[j + 1], copyData[j + 2], copyData[j + 3]]
+    ;[data[i], data[i + 1], data[i + 2], data[i + 3]] = [copy[j], copy[j + 1], copy[j + 2], copy[j + 3]]
   }
   putImageData(imgData)
 }
