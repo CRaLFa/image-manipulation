@@ -1,6 +1,6 @@
 # Image Manipulation
 
-A web page which provides simple image editing and color picking
+Web page which provides simple image editing and color picking
 
 <https://cralfa-image-manipulation.netlify.app/>
 
